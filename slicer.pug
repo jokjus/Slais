@@ -1,0 +1,52 @@
+include misc/Tool-UI/mixins.pug
+head
+	meta(charset='UTF-8')
+	title Slicer
+	link(rel='stylesheet' href='misc/Tool-UI/tool-ui.css')
+	link(rel='stylesheet' href='style.css')
+	script(type='text/javascript' src='https://unpkg.com/acorn')
+	script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.11/paper-full.min.js')
+	//- script(type='text/javascript' src='misc/CCapture.all.min.js')
+	
+
+body
+	
+	.ui-panel
+		.ui-section
+			+header('Type')
+
+			.ui-component.two
+				+field('debug', 'Debug', false, 'checkbox')
+				+field('innerLine', 'Inner line', false, 'checkbox')
+
+		.ui-section
+			+header('Color')
+
+			.ui-component.two
+				+field('fillColor', 'Fill', '#000', 'color')
+				+field('strokeColor', 'Stroke', '#fff', 'color')
+				+field('strokeWidth', 'Stroke width', 5, 'number', 0, 100)
+		
+		.ui-section
+			+header('Line Fill')
+
+			.ui-component.two
+				+field('lineFill', 'Line fill', false, 'checkbox')
+				+field('lineFillColor', 'Color', '#000', 'color')
+				+field('lineFillWidth', 'Width', 1, 'number', 0, 20)
+
+		.ui-section
+			+header('Project')
+			+button('log-project', 'Log project', '')
+			+button('export-button', 'Export as SVG', '')
+	
+	canvas#canvas(resize='')
+
+	//- #pathTarget Drop SVG here.
+
+	script(type='text/javascript' src='misc/filesaver/FileSaver.js')
+	script(type='text/javascript' src='misc/paperjs-offset.min.js')
+	//- script(src="https://scrtwpns.com/mixbox.js")
+	script(type='text/javascript' src='misc/utility.js')
+	script(type='text/paperscript' canvas='canvas' src='slicer.js')
+	script(type='text/javascript' src='misc/Tool-UI/tool-ui.js')
