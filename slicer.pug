@@ -20,6 +20,11 @@ body
 				+field('innerLine', 'Inner line', false, 'checkbox')
 
 		.ui-section
+			+header('Rounding')
+			.ui-component.two
+				+field('rounding', 'Amount', 40, 'number', 0, 200)
+
+		.ui-section
 			+header('Color')
 
 			.ui-component.two
@@ -34,6 +39,7 @@ body
 				+field('lineFill', 'Line fill', false, 'checkbox')
 				+field('lineFillColor', 'Color', '#000', 'color')
 				+field('lineFillWidth', 'Width', 1, 'number', 0, 20)
+				+field('lineFillFreq', 'Freq', 5, 'number', 0, 200)
 
 		.ui-section
 			+header('Project')

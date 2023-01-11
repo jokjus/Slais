@@ -9,7 +9,9 @@ let c = {
 	strokeColor: new Color(1,1,1),
 	strokeWidth: 5,
 	lineFillWidth: 1,
-	lineFillColor: new Color(0,0,0)
+	lineFillColor: new Color(0,0,0),
+	lineFillFreq: 5,
+	rounding: 40
 }
 
 let w = view.size.width,
@@ -233,7 +235,7 @@ function onMouseUp(event) {
 				el.strokeWidth = c.strokeWidth
 				el.fillColor = c.fillColor
 				
-				round(el, 40)
+				round(el, c.rounding)
 				
 				if (c.debug) {
 					el.fullySelected = true
@@ -526,7 +528,7 @@ function fillElWithRandomLines(el) {
 
 		if (el.fillColor != null) {
 			gray = el.fillColor.gray + 0.1
-			f = gray * 5 + 5
+			f = gray * c.lineFillFreq + 5
 		}
 		
 		let b = el.bounds
@@ -685,3 +687,5 @@ addListener('debug', 'checkbox', true)
 addListener('innerLine', 'checkbox', true)
 addListener('lineFill', 'checkbox', true)
 addListener('lineFillColor', 'color', true)
+addListener('lineFillFreq', null, true)
+addListener('rounding', null, true)
